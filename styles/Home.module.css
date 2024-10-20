@@ -96,7 +96,7 @@
   align-items: center;
   padding: 0 20px;
   background-image: url('/background.jpg'); /* Set your background image */
-  background-size: cover; /* Cover the entire container */
+  background-size:cover; /* Cover the entire container */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Prevent background image from repeating */
 }
