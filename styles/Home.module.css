@@ -49,6 +49,7 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   will-change: transform;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .logoContainer:hover {
