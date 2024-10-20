@@ -1,28 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height of the viewport */
+  padding: 0 20px; /* Padding for better spacing */
+  background-image: url('/background.jpg'); /* Background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repeating */
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px; /* Optional: rounded corners */
+  padding: 20px; /* Padding for the main content */
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: space-between; /* Space out the logos evenly */
+  width: 100%; /* Full width */
+  margin-bottom: 20px; /* Space between brand logos and grid */
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
-  grid-template-rows: repeat(6, 1fr); /* 6 equal rows */
+  grid-template-rows: repeat(5, 1fr); /* 5 equal rows */
   gap: 0; /* No spacing between logos */
-  max-width: 100%; /* Ensures the grid takes up the full width */
-  margin: 0; /* Removes any margin */
+  width: 600px; /* Fixed width for the grid */
+  height: 550px; /* Fixed height for the grid */
+  overflow: hidden; /* Prevent scrolling */
+  justify-items: center; /* Center items in grid cells */
 }
 
 .logoContainer {
   position: relative;
   width: 100%; /* Logo will take full width of the grid cell */
   height: 100%; /* Logo will take full height of the grid cell */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.logoContainer:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .logoImage {
-  max-width: 80%; /* Scale down the logo images */
-  max-height: 80%; /* Scale down the logo images */
+  max-width: 75%; /* Scale down the logo images */
+  max-height: 75%; /* Scale down the logo images */
   object-fit: contain; /* Maintain aspect ratio */
 }
 
@@ -39,7 +74,7 @@
 }
 
 .sold {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.1); /* Change background when sold */
 }
 
 .nflLogoContainer {
@@ -48,33 +83,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90%; /* Adjust width to fit the grid cell */
+  height: 120%; /* Adjust height to fit the grid cell */
+  overflow: visible; /* Allow overflow for the logo */
 }
 
 .nflLogo {
-  width: 200px;
-  height: auto;
+  width: 120%; /* Make the NFL logo larger */
+  height: auto; /* Maintain aspect ratio */
+  position: relative; /* Keep it relative to the container */
+  top: -10%; /* Adjust position to overflow upwards a bit */
 }
 
 .lightningGif {
   position: absolute;
-  top: -30px; /* Adjust based on your layout */
+  top: -150px; /* Adjust based on your layout */
   left: 50%;
   transform: translateX(-50%);
-  width: 70px; /* Adjust size of the lightning GIF */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 10;
+  width: 400px; /* Increase the width */
+  height: 250px; /* Increase the height to maintain aspect ratio */
+  z-index: 20; /* Ensure it's higher than the NFL logo */
 }
 
-.lightningOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* Bright light effect */
-  z-index: 20; /* Ensure it appears above other elements */
-  animation: flash 0.5s ease forwards; /* Duration and timing function of the animation */
+.nflLogoContainer {
+  grid-column: 3 / span 2; /* Span 2 columns */
+  grid-row: 3 / span 2; /* Span 2 rows */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure the container is positioned */
+  width: 90%; /* Adjust width to fit the grid cell */
+  height: 120%; /* Adjust height to fit the grid cell */
+  overflow: visible; /* Allow overflow for the logo */
+  z-index: 10; /* Set a lower z-index */
 }
+
+
 
 @keyframes flash {
   0% {
@@ -88,26 +132,6 @@
   }
 }
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  background-image: url('/background.jpg'); /* Set your background image */
-  background-size:cover; /* Cover the entire container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent background image from repeating */
-}
-
-.main {
-  /* background-color: rgba(255, 255, 255, 0.8); Slightly opaque background for better visibility */
-  border-radius: 8px; /* Optional: rounded corners */
-  padding: 20px; /* Padding for the main content */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); Optional: shadow effect */
-}
-
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
@@ -118,4 +142,15 @@
 
 .logoContainer.shake {
   animation: shake 0.5s ease forwards; /* Duration and timing function of the shake */
+}
+
+.lightningOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 20;
+  animation: flash 0.5s ease forwards; 
 }
